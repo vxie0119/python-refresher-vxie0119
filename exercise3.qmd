@@ -52,8 +52,8 @@ switch_wins_3, no_switch_wins_3 = monty_hall(3, 1000)
 switch_wins_5, no_switch_wins_5 = monty_hall(5, 1000)
 
 print("Monty Hall Simulation Results")
-print(f"3 Door - Switch Strategy Win Proportion: {}".format(switch_wins_3))
-print(f"3 Door - No Switch Strategy Win Proportion: {}".format(no_switch_wins_3))
-print(f"5 Door - Switch Strategy Win Proportion: {}".format(switch_wins_5))
-print(f"5 Door - No Switch Strategy Win Proportion: {}".format(no_switch_wins_5))
+print("3 Door - Switch Strategy Win Proportion:", switch_wins_3)
+print("3 Door - No Switch Strategy Win Proportion:", no_switch_wins_3)
+print("5 Door - Switch Strategy Win Proportion:", switch_wins_5)
+print("5 Door - No Switch Strategy Win Proportion:", no_switch_wins_5)
 ```
