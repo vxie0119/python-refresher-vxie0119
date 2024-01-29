@@ -89,6 +89,7 @@ print("5 Door - No Switch Strategy Win Proportion: {:.1f}%".format(no_switch_win
     (\square \bigcirc \square) \bigcirc (\square \bigcirc \square)
    \end{equation*}
    is one way to group the the operations.
+   
    1. List all the possible ways to group the four numbers.
    1. How many possibly ways are there to check for a solution?
    1. Write a function to solve the problem in a brutal force way. The
