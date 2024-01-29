@@ -34,26 +34,28 @@ def monty_hall(ndoors, ntrials):
         monty_open = random.choice(monty_choices)
 
         # strategy of switch or no switch
-        switch_choice = [i for i in range(ndoors) if i != choice and i != monty_open[0]]
+        switch_choice = [i for i in range(ndoors) if i != choice and i != monty_open]
 
         # checks if player wins with switch strategy
-        if door[switch_choice] == 'car':
+        if doors[random.choice(switch_choice)] == 'car':
             switch_wins += 1
 
         # checks if player wins with no switch strategy
-        if door[choice] == 'car':
+        if doors[choice] == 'car':
             no_switch_wins += 1
 
     switch_win_percentage = (switch_wins/ntrials) * 100
     no_switch_win_percentage = (no_switch_wins/ntrials) * 100
+
+    return switch_win_percentage, no_switch_win_percentage
 
 # simulation with 3 doors and 5 doors for 1000 trials
 switch_wins_3, no_switch_wins_3 = monty_hall(3, 1000)
 switch_wins_5, no_switch_wins_5 = monty_hall(5, 1000)
 
 print("Monty Hall Simulation Results")
-print("3 Door - Switch Strategy Win Proportion:", switch_wins_3)
-print("3 Door - No Switch Strategy Win Proportion:", no_switch_wins_3)
-print("5 Door - Switch Strategy Win Proportion:", switch_wins_5)
-print("5 Door - No Switch Strategy Win Proportion:", no_switch_wins_5)
+print("3 Door - Switch Strategy Win Proportion:", switch_wins_3, "%")
+print("3 Door - No Switch Strategy Win Proportion:", no_switch_wins_3, "%")
+print("5 Door - Switch Strategy Win Proportion:", switch_wins_5, "%")
+print("5 Door - No Switch Strategy Win Proportion:", no_switch_wins_5, "%")
 ```
