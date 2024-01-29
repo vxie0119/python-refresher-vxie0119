@@ -1,0 +1,77 @@
+---
+title: "Homework 2"
+author: "Vincent Xie"
+toc: true
+number-sections: true
+highlight-style: pygments
+format: 
+  html: 
+    code-fold: true
+    html-math-method: katex
+  pdf: 
+    geometry: 
+      - top=30mm
+      - left=20mm
+---
+
+# Exercise 3
+
+**Monty Hall**
+   Write a function to demonstrate the Monty Hall problem through
+   simulation. The function takes two arguments `ndoors` and
+   `ntrials`, representing the number of doors in the experiment and
+   the number of trails in a simulation, respectively. The function
+   should return the proportion of wins for both the switch and
+   no-switch strategy. Apply your function with 3 doors and 5 doors,
+   both with 1000 trials. Include sufficient text around the code to
+   explain your them.
+
+```{python}
+import random
+random.seed(3255)
+
+def monty_hall(ndoors, ntrials):
+    # initialize a counter for wins
+    switch_wins = 0
+    no_switch_wins = 0
+
+    for i in range(ntrials):
+        # depending on number of doors, will make one door have a prize
+        doors = ['goat'] * (ndoors-1) + ['car']
+
+        # shuffles the doors
+        random.shuffle(doors)
+
+        # random choice based on number of doors
+        choice = random.randint(0, ndoors-1)
+
+        # opens door with goat behind it
+        monty_choices = [i for i in range(ndoors) if i != choice and doors[i] == 'goat']
+        monty_open = random.choice(monty_choices)
+
+        # strategy of switch or no switch
+        switch_choice = [i for i in range(ndoors) if i != choice and i != monty_open]
+
+        # checks if player wins with switch strategy
+        if doors[random.choice(switch_choice)] == 'car':
+            switch_wins += 1
+
+        # checks if player wins with no switch strategy
+        if doors[choice] == 'car':
+            no_switch_wins += 1
+
+    switch_win_percentage = (switch_wins/ntrials) * 100
+    no_switch_win_percentage = (no_switch_wins/ntrials) * 100
+
+    return switch_win_percentage, no_switch_win_percentage
+
+# simulation with 3 doors and 5 doors for 1000 trials
+switch_wins_3, no_switch_wins_3 = monty_hall(3, 1000)
+switch_wins_5, no_switch_wins_5 = monty_hall(5, 1000)
+
+print("Monty Hall Simulation Results")
+print("3 Door - Switch Strategy Win Proportion: {:.1f}%".format(switch_wins_3))
+print("3 Door - No Switch Strategy Win Proportion: {:.1f}%".format(no_switch_wins_3))
+print("5 Door - Switch Strategy Win Proportion: {:.1f}%".format(switch_wins_5))
+print("5 Door - No Switch Strategy Win Proportion: {:.1f}%".format(no_switch_wins_5))
+```
