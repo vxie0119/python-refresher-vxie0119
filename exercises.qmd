@@ -75,3 +75,49 @@ print("3 Door - No Switch Strategy Win Proportion: {:.1f}%".format(no_switch_win
 print("5 Door - Switch Strategy Win Proportion: {:.1f}%".format(switch_wins_5))
 print("5 Door - No Switch Strategy Win Proportion: {:.1f}%".format(no_switch_wins_5))
 ```
+
+
+# Exercise 6
+**Game 24**
+   The [math game 24](http://en.wikipedia.org/wiki/24_Game) is one of the
+   addictive games among number lovers. With four randomly selected cards form
+   a deck of poker cards, use all four values and elementary arithmetic
+   operations ($+-\times /$) to come up with 24. Let $\square$ be one of
+   the four numbers. Let $\bigcirc$ represent one of the four operators.
+   For example, 
+   \begin{equation*}
+    (\square \bigcirc \square) \bigcirc (\square \bigcirc \square)
+   \end{equation*}
+   is one way to group the the operations.
+   1. List all the possible ways to group the four numbers.
+   1. How many possibly ways are there to check for a solution?
+   1. Write a function to solve the problem in a brutal force way. The
+   inputs of the function are four numbers. The function returns a list
+   of solutions. Some of the solutions will be equivalent, but let us
+   not worry about that for now.
+
+```{python}
+import itertools
+
+def game_of_24(numbers):
+  num_perms = list(itertools.permutations(numbers))
+  solutions = []
+
+  # iterate through each permutation
+  for perm in num_perms:
+    # generate all possible arrangements of operators
+    for ops in itertools.product('+-*/', repeat=3):
+      # evaluate expression
+      expression = '({}{}{}{}{}{}{})'.format(perm[0], ops[0], perm[1], ops[1], perm[2], ops[2], perm[3])
+      try:
+        if eval(expression) == 24:
+          solutions.append(expression)
+      except ZeroDivisionError:
+          continue
+  return solutions
+
+# Example
+numbers = [4, 7, 8, 8]
+solutions = game_of_24(numbers)
+print("Solutions:", solutions)
+```
