@@ -1,0 +1,11 @@
+# Exercise 3
+
+**Monty Hall**
+   Write a function to demonstrate the Monty Hall problem through
+   simulation. The function takes two arguments `ndoors` and
+   `ntrials`, representing the number of doors in the experiment and
+   the number of trails in a simulation, respectively. The function
+   should return the proportion of wins for both the switch and
+   no-switch strategy. Apply your function with 3 doors and 5 doors,
+   both with 1000 trials. Include sufficient text around the code to
+   explain your them.
