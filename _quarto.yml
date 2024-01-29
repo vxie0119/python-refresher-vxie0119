@@ -1,5 +1,5 @@
 project:
-  type: default
+  type: book
 
 book:
   title: "Homework 2"
@@ -8,19 +8,11 @@ book:
   date: "1/29/2024"
   chapters:
     - exercise3.qmd
-    - intro.qmd
-    - git.qmd
-    - quarto.qmd
-    - python.qmd
-    - exercises.qmd
-    - references.qmd
 
 
 format:
-  html:
-    theme: cosmo
-    pdf:
-    documentclass: scrreprt
+  pdf:
+   documentclass: scrreprt
 
 execute:
   freeze: auto
