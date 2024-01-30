@@ -175,7 +175,7 @@ def game_of_24(numbers):
     for ops in product(operators, repeat=3):
       # Evaluate expression
       expression = '({}{}{}){}({}{}{})'.format(perm[0], ops[0], perm[1], 
-                                             ops[1], perm[2], ops[2], perm[3])
+                                               ops[1], perm[2], ops[2], perm[3])
       try:
         # If the expression is equal to 24, append to list of solutions
         if eval(expression) == 24:
