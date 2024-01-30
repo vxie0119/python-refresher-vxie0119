@@ -96,16 +96,15 @@ print("5 Door - No Switch Strategy Win Proportion: {:.1f}%".format(no_switch_win
    \end{equation*}
    is one way to group the the operations.
    
+
   1. List all the possible ways to group the four numbers.
 
   **Linear**
-
   \begin{equation*}
     \square \bigcirc \square \bigcirc \square \bigcirc \square
   \end{equation*}
 
   **One Bracket**
-
   \begin{equation*}
     (\square \bigcirc \square) \bigcirc \square \bigcirc \square
   \end{equation*}
@@ -135,6 +134,7 @@ print("5 Door - No Switch Strategy Win Proportion: {:.1f}%".format(no_switch_win
     \square \bigcirc ((\square \bigcirc \square) \bigcirc \square)
   \end{equation*}
 
+
    2. How many possibly ways are there to check for a solution?
 
    **Number Choice:** There are 4 different numbers so this is a permutation of 4 numbers. 
@@ -151,7 +151,7 @@ print("5 Door - No Switch Strategy Win Proportion: {:.1f}%".format(no_switch_win
    To find out how many ways there is to check for a solution, we use...
 
    \begin{equation*}
-   Total Possibilities = Number Arrangements * Operation Choices * Number of Groupings
+   Total Possibilities = Number Arrangements * Operation Choices * Number Of Groupings
    \end{equation*}
 
    With this equation, we find out that there are a total of 13,824 possible ways to check for
@@ -163,28 +163,31 @@ print("5 Door - No Switch Strategy Win Proportion: {:.1f}%".format(no_switch_win
    not worry about that for now.
 
 ```{python}
-import itertools
+from itertools import permutations, product
 
 def game_of_24(numbers):
-  num_perms = list(itertools.permutations(numbers))
   solutions = []
+  operators = ['+', '-', '*', '/']
 
-  # iterate through each permutation
-  for perm in num_perms:
-    # generate all possible arrangements of operators
-    for ops in itertools.product('+-*/', repeat=3):
-      # evaluate expression
-      expression = '({}{}{}{}{}{}{})'.format(perm[0], ops[0], perm[1], 
+  # Iterate through each permutation
+  for perm in permutations(numbers):
+    # Generate all possible arrangements of operators
+    for ops in product(operators, repeat=3):
+      # Evaluate expression
+      expression = '({}{}{}){}({}{}{})'.format(perm[0], ops[0], perm[1], 
                                              ops[1], perm[2], ops[2], perm[3])
       try:
+        # If the expression is equal to 24, append to list of solutions
         if eval(expression) == 24:
           solutions.append(expression)
+      # Divide by zero edge case
       except ZeroDivisionError:
           continue
   return solutions
 
 # Example
-numbers = [4, 7, 8, 8]
+numbers = [3, 6, 8, 3]
 solutions = game_of_24(numbers)
-print("Solutions:", solutions)
+for sol in solutions:
+  print(sol)
 ```
