@@ -96,7 +96,7 @@ print("5 Door - No Switch Strategy Win Proportion: {:.1f}%".format(no_switch_win
    \end{equation*}
    is one way to group the the operations.
    
-   1. List all the possible ways to group the four numbers.
+  1. List all the possible ways to group the four numbers.
 
   **Linear**
 
@@ -135,10 +135,11 @@ print("5 Door - No Switch Strategy Win Proportion: {:.1f}%".format(no_switch_win
     \square \bigcirc ((\square \bigcirc \square) \bigcirc \square)
   \end{equation*}
 
-   1. How many possibly ways are there to check for a solution?
+   2. How many possibly ways are there to check for a solution?
 
    **Number Choice:** There are 4 different numbers so this is a permutation of 4 numbers. 
-   So there are \begin{equation*} 4! = 4 * 3 * 2 * 1 \end{equation*} = 24 ways. 
+   So there are \begin{equation*} 4! = 4 * 3 * 2 * 1 = 24 \end{equation*} ways to arrange 
+   the numbers.
 
    **Operation Choice:** There are 3 different slots for the 4 basic arithmetic operations. 
    Therefore, there are \begin{equation*} 4^3 = 64 \end{equation*} possible combinations for
@@ -150,13 +151,13 @@ print("5 Door - No Switch Strategy Win Proportion: {:.1f}%".format(no_switch_win
    To find out how many ways there is to check for a solution, we use...
 
    \begin{equation*}
-   possibilities = number_choices * operation_choices * num_groupings
+   Total Possibilities = Number Arrangements * Operation Choices * Number of Groupings
    \end{equation*}
 
    With this equation, we find out that there are a total of 13,824 possible ways to check for
    a solution in the game of 24.
 
-   1. Write a function to solve the problem in a brutal force way. The
+   3. Write a function to solve the problem in a brutal force way. The
    inputs of the function are four numbers. The function returns a list
    of solutions. Some of the solutions will be equivalent, but let us
    not worry about that for now.
@@ -174,7 +175,7 @@ def game_of_24(numbers):
     for ops in itertools.product('+-*/', repeat=3):
       # evaluate expression
       expression = '({}{}{}{}{}{}{})'.format(perm[0], ops[0], perm[1], 
-                                            ops[1], perm[2], ops[2], perm[3])
+                                             ops[1], perm[2], ops[2], perm[3])
       try:
         if eval(expression) == 24:
           solutions.append(expression)
