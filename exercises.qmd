@@ -84,6 +84,7 @@ print("5 Door - No Switch Strategy Win Proportion: {:.1f}%".format(no_switch_win
 # Exercise 6 {.unnumbered}
 
 **Game 24**
+
    The [math game 24](http://en.wikipedia.org/wiki/24_Game) is one of the
    addictive games among number lovers. With four randomly selected cards form
    a deck of poker cards, use all four values and elementary arithmetic
@@ -107,7 +108,11 @@ print("5 Door - No Switch Strategy Win Proportion: {:.1f}%".format(no_switch_win
 
   \begin{equation*}
     (\square \bigcirc \square) \bigcirc \square \bigcirc \square
+  \end{equation*}
+  \begin{equation*}
     \square \bigcirc (\square \bigcirc \square) \bigcirc \square
+  \end{equation*}
+  \begin{equation*}
     \square \bigcirc \square \bigcirc (\square \bigcirc \square)
   \end{equation*}
 
@@ -119,8 +124,14 @@ print("5 Door - No Switch Strategy Win Proportion: {:.1f}%".format(no_switch_win
   **Nested Brackets**
   \begin{equation*}
     ((\square \bigcirc \square) \bigcirc \square) \bigcirc \square
+  \end{equation*}
+  \begin{equation*}
     \square \bigcirc (\square \bigcirc (\square \bigcirc \square))
+  \end{equation*}
+  \begin{equation*}
     (\square \bigcirc (\square \bigcirc \square)) \bigcirc \square
+  \end{equation*}
+  \begin{equation*}
     \square \bigcirc ((\square \bigcirc \square) \bigcirc \square)
   \end{equation*}
 
